@@ -106,6 +106,6 @@ class User implements userProps {
     }
 }
 
-let user = new User("Camila", "Chang", "camilachang", "camila@gmail.com", 1234, "123.456.789-12", 11970213551, true);
+let user = new User("Camila", "Chang", "camilachang", "camila@gmail.com", 1234, "123.456.789-12", 11123456789, true);
 
 console.log(user)
