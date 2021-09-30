@@ -1,0 +1,40 @@
+<h1>Cadastrar Paciente</h1>
+
+<div class="card">
+    <form #formPaciente="ngForm">
+        <div class="form-group">
+            <label for="nome">Nome do Paciente</label>
+            <input type="text" class="form-control" id="nome" [(ngModel)]="paciente.nome" #nome="ngModel" name="nome"
+                required>
+        </div>
+        <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
+            <div [hidden]="!nome.errors.required">
+                Digite o nome do Paciente.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="prioridade">Prioridade</label>
+            <select name="prioridade" id="prioridade" class="form-control col-2" id="prioridade" name="prioridade"
+                [(ngModel)]="paciente.prioridade" #prioridade="ngModel" required>
+                <option value=""></option>
+                <option value="Baixo">Baixo</option>
+                <option value="Moderado">Moderado</option>
+                <option value="Alto">Alto</option>
+                <option value="Urgente">Urgente</option>
+            </select>
+        </div>
+
+
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-success" (click)="cadastrar()" value="Cadastrar"
+                [disabled]="!formPaciente.form.valid">
+            <a class="btn btn-default" [routerLink]="['/pacientes']">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                </svg> Voltar
+            </a>
+        </div>
+    </form>
+</div>
