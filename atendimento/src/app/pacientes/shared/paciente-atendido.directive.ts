@@ -10,7 +10,7 @@ export class PacienteAtendidoDirective {
 
     ngOnInit(){
       if(this.pacienteAtendido){
-        this.el.nativeElement.style.backgroundColor = "green"
+        this.el.nativeElement.style.backgroundColor = "#32CD32"
       }
     }
 
