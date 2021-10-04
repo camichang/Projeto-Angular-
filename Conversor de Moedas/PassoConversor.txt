@@ -1,0 +1,456 @@
+Observables - transferencia de dados assincrona (não precisa que uma transferenciaseja finalizada para iniciar outra), quando não precisa de resposta.
+funciona para que nao precise esperar pela resposta. Utiliza uma biblioteca a rxjs. 
+
+subscribe vai sobrescrever o que vai ser suportado.
+
+hot e cold
+cold cria um produtor de dados para cada assinante
+hot cria primeiro um produtor de dados e cada assinante obtem os dados de um produtor
+
+---Projeto Conversao de moedas ---
+1) ng new conversor-de-moeda
+responder No, escolher CSS
+
+2)No tsconfig.json mudar strict de true para false
+
+3)No app.component.spect.ts retirar os 2 ultimos testes:
+da linha 19-30
+
+4)No app.component.ts - mudar o titulo para Conversor de Moedas
+
+5)iniciar o ng serve no prompt
+
+6)no 2 prompt instalar o bootstrap e da biblioteca jQuery
+npm install --save bootstrap@3
+npm instaall --save jQuery
+
+7)inserir no style do angular.json - "node_modules/bootstrap/dist/css/bootstrap.min.css"
+inserir no scripts do angular.json -  "node_modules/jquery/dist/jquery.min.js"
+
+8)no prompt 2 criar um modulo - 
+ng g module conversor
+
+9)criar um index.ts na pasta conversor e fazer a exportação: 
+export * from './conversor.module'
+
+10)No app.module.ts em imports adicionar depois da
+, 
+ConversorModule
+]
+
+11)Criar uma pasta dentro da pasta conversor com o nome models (vai ficar o modelo)
+
+12)Criar um arquivo dentro da pasta models:
+moeda.model.ts
+
+13)No arquivo moeda.module.ts:
+export class Moeda{
+    constructor(public sigla?: string, public descricao?: string){}
+}
+
+14)Criar um arquivo index.ts na pasta model para exportar:
+export * from './moeda.model'
+
+15)No index da pasta conversor adicionar o export:
+export * from './models'
+
+16)Criar um arquivo na pasta models:
+conversao.model.ts (modelo de como vai converter)
+
+17)No arquivo conversao.model.ts adicionar:
+export class Conversao{
+    constructor(
+        public moedaDe?: string, 
+        public moedaPara?: string,
+        public valor?: number){}
+}
+Este model é pra saber de qual moeda vai para qual
+
+18)No index da pasta models adicionar:
+export * from './conversao.model'
+
+19)Criar um arquivo no models:
+conversao-response.model.ts que vai ser a resposta da conversao
+
+e adicionar:
+export class ConversaoResponse{
+    constructor(
+        public base?: string,
+        public date?:string,
+        public rates?: any){}
+}
+
+//o rates é pra saber o valor que vai ser convertido
+//espera receber: {"base": "USD", "date": "2017-03-08", "rates":{"BRL": 3.1405}}
+
+20)no index do models, fazer a exportacao:
+export * from './conversao-response.model'
+
+21)No 2 prompt criar um component:
+ng g component conversor/conversor
+
+22)Renomear a pasta criada de conversor para components
+
+23)Dentro de components criar um index.ts e fazer a exportacao
+
+24)No index do conversor adicionar o export:
+export * from './components'
+
+25)no conversor.module.ts, alterar o import feito para:
+import { ConversorComponent } from './components';
+
+Ainda no conversor.module.ts depois de imports, adicionar
+],
+exports:[
+ ConversorComponent
+]
+
+26)apagar todo o conteudo do app.component.html
+
+27)No arquivo conversor.component.ts verificar qual é o seletor e colocar a tag do seletor no app.component.html
+<app-conversor></app-conversor>
+
+28)No 2 prompt criar um serviço:
+ng g service conversor/services/moeda
+
+29)Criar um index.ts na pasta services e exportar. 
+export * from './moeda.service'
+
+30)E no index da pasta conversor exportar:
+export * from './services'
+
+31)No conversor.module.ts depois de exports:[...
+],
+providers:[
+MoedaService]
+
+e no import alterar para: 
+import { MoedaService } from './services';
+
+32)No moeda.service.ts, apagar as chaves e o conteudo de @injectable()
+
+33)Fazer o import de moeda:
+import { Moeda } from '../models';
+
+34)Adicionar no moeda.service.ts:
+depois de export:
+export class MoedaService {
+
+  private moedas: Moeda[];
+
+  constructor() { }
+
+  private moedasObj = [ //http://fixer.io
+    { "sigla": "AUD", "descricao": "Dólar australiano" },
+    { "sigla": "BGN", "descricao": "Lev búlgaro" },
+    { "sigla": "BRL", "descricao": "Real brasileiro" },
+    { "sigla": "CAD", "descricao": "Dólar canadense" },
+    { "sigla": "CHF", "descricao": "Franco suíço" },
+    { "sigla": "CNY", "descricao": "Yuan Chinês" },
+    { "sigla": "CZK", "descricao": "Coroa República Tcheca" },
+    { "sigla": "DKK", "descricao": "Coroa dinamarquesa" },
+    { "sigla": "EUR", "descricao": "Euro" },
+    { "sigla": "GBP", "descricao": "Libra Esterlina" },
+    { "sigla": "HKD", "descricao": "Dólar de Hong Kong" },
+    { "sigla": "HRK", "descricao": "Coroa Croácia" },
+    { "sigla": "HUF", "descricao": "Florim húngaro" },
+    { "sigla": "IDR", "descricao": "Rupia indonésia" },
+    { "sigla": "ILS", "descricao": "Novo shekel israelense" },
+    { "sigla": "INR", "descricao": "Rupia indiana" },
+    { "sigla": "JPY", "descricao": "Iene japonês" },
+    { "sigla": "KRW", "descricao": "Won sul-coreano" },
+    { "sigla": "MXN", "descricao": "Peso mexicano" },
+    { "sigla": "MYR", "descricao": "Malásia Ringgit" },
+    { "sigla": "NOK", "descricao": "Coroa Noruega" },
+    { "sigla": "NZD", "descricao": "Dólar da Nova Zelândia" },
+    { "sigla": "PHP", "descricao": "Peso filipino" },
+    { "sigla": "PLN", "descricao": "Złoty Polónia" },
+    { "sigla": "RON", "descricao": "Leu romeno" },
+    { "sigla": "RUB", "descricao": "Belarus Ruble" },
+    { "sigla": "SEK", "descricao": "Coroa Suécia" },
+    { "sigla": "SGD", "descricao": "Dólar de Singapura" },
+    { "sigla": "THB", "descricao": "Baht Tailândia" },
+    { "sigla": "TRY", "descricao": "Lira turca" },
+    { "sigla": "USD", "descricao": "Dólar dos Estados Unidos" },
+    { "sigla": "ZAR", "descricao": "Rand África do Sul" }
+  ];
+  
+    listarTodas(): Moeda[]{
+    if(this.moedas){
+      return this.moedas;
+    }
+    this.moedas = [];
+
+    for(let moedasObj of this.moedasObj){
+      let moeda: Moeda = new Moeda(); //para fazer a varredura foi criada uma variavel moeda e usou como objeto auxiliar para usar no objeto
+      Object.assign(moeda, moedasObj);
+      this.moedas.push(moeda);
+    }
+    //assign metodo que copia elementos de um array
+	  return this.moedas;
+
+  }
+}
+
+35)Criar outro service agora para conversor:
+ng g service conversor/services/conversor
+
+36)No index da pasta services fazer o export:
+export * from './conversor.service';
+
+37)No conversor.module.ts adicionar em providers:[
+...
+,
+    ConversorService
+]
+
+e no import adicionar o conversorService em:
+import { MoedaService, ConversorService } from './services';
+
+38)No conversor.services.ts retirar as {} do injectable
+
+e criar uma variavel abaixo do export:
+
+ private readonly BASE_URL = "http://data.fixer.io/api/latest?access_key=eba7130a5b2d720ce43eb5fcddd47cc3";
+ 
+39)No app.module.ts e no conversor.module.ts fazer o import após o imports:[...
+,
+HttpClientModule
+]
+
+confirmar se foi feito a importação acima corretamente
+
+40)No arquivo conversor.service.ts adicionar o import:
+import { HttpClient} from '@angular/common/http';
+import { ConversaoResponse, Conversao} from '../models'
+import { Observable } from 'rxjs';
+
+No constructor editar para:
+
+constructor(private http: HttpClient) { }
+
+
+  converter(conversao: Conversao): Observable<any> {
+    let params = `&base=${conversao.moedaDe}&symbols=${conversao.moedaPara}`;
+    return this.http.get(this.BASE_URL + params);
+	}
+}
+
+/**
+   * retornar a cotacao para um dado de resposta (response)
+   * @param conversaoResponse 
+   * @param conversao 
+   * @returns number
+   */
+  cotacaoPara(conversaoResponse: ConversaoResponse, conversao: Conversao): number{
+  if(conversaoResponse === undefined) {
+    return 0;
+  }
+  return conversaoResponse.rates[conversao.moedaPara]; 
+  }
+  cotacaoDe(conversaoResponse: ConversaoResponse, conversao: Conversao): string{
+    if (conversaoResponse === undefined){
+      return '0'; //ele recebe uma string
+    }
+      return (1/conversaoResponse.rates[conversao.moedaPara]).toFixed(4);
+  }
+
+ }
+
+  dataCotacao(conversaoResponse: ConversaoResponse): string{
+    if(conversaoResponse === undefined){
+      return '';
+    }
+    return conversaoResponse.date;
+  }
+}
+
+41)No app.component.html colocar:
+
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="nav-header">
+        <a class="navbar-brand" href="#">
+          {{title}} <!--String de Interpolação - Esse title esta dentro de app.conponent.ts-->
+        </a>
+      </div>
+    </div>
+  </nav>
+ <app-conversor></app-conversor>
+</div>
+
+42)No conversor.component.html colocar:
+<br />
+<div class="alert alert-danger"	role="alert">
+	Erro obtendo dados. Tente novamente.
+</div>
+<div class="panel panel-success">
+	<div class="panel-heading">
+		Selecione a moeda a ser convertida
+	</div>
+	<div class="panel-body text-center">
+	  <form class="form-inline">
+		<input type="text" name="valor" class="form-control text-right"	placeholder="0"required>
+		<select name="moedaDe" class="form-control"	required>
+			<option>
+				
+			</option>
+		</select>
+		<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+		<select	name="moedaPara" class="form-control" required>
+			<option>
+				
+			</option>
+		</select>
+		<input type="submit" value="Converter" class="btn btn-success" data-toggle="modal" data-target="#modalCotacao">
+	  </form>
+	 </div>
+</div>
+
+43)Adicionar no conversor.component.ts o import:
+
+import { NgForm } from '@angular/forms';
+import { ConversorService, MoedaService } from '../services';
+import { Moeda, Conversao, ConversaoResponse } from '../models';
+
+
+após o export adicionar{
+
+  moedas: Moeda[];
+  conversao: Conversao;
+  possuiErro: boolean;
+  conversaoResponse: ConversaoResponse;
+
+
+  @ViewChild("conversaoForm", {static: true}) conversaoForm: NgForm;
+
+  constructor(
+    private moedaService: MoedaService, 
+    private conversorService: ConversorService
+    ) { }
+ /**
+     * efetua a chamada, a conversao dos valores
+     */
+    
+  ngOnInit(): void {
+    this.moedas = this.moedaService.listarTodas();
+    this.init();
+  }
+
+  init(): void{
+    this.conversao = new Conversao('USD', 'BRL', null);
+    this.possuiErro = false;
+  }
+  converter(): void{
+    if(this.conversaoForm.form.valid){
+      this.conversorService.converter(this.conversao).subscribe(
+      response => this.conversaoResponse = response, 
+      error => this.possuiErro = true
+      )
+    }
+  }
+
+}
+44)adicionar no conversor.component.html no primeiro form:
+<form #conversaoForm="ngForm" class="form-inline">
+
+adicionar no conversor.module.ts e no app.module.ts o import
+...,
+FormsModule
+]
+
+45)adicionar no conversor.component.html na primeira div
+<div class="alert bg-danger"	role="alert" *ngIf="possuiErro">
+
+46)adicionarno conversor.component.html no primeiro input depois do form
+<input type="text" name="valor" class="mr-3 form-control text-center"	placeholder="0"  [(ngModel)]="conversao.valor" required>
+
+<select name="moedaDe" [(ngModel)]="conversao.moedaDe" class="form-control"	required>
+
+<option class="mr-3" *ngFor="let moeda of moedas" [value]="moeda.sigla">
+	{{moeda.sigla}} - {{moeda.descricao}}
+</option>
+</select>
+
+Para o outro select fazer a mesma coisa:
+<select name="moedaPara" class="form-control mr-3" [(ngModel)]="conversao.moedaPara" required>
+
+<option class="mr-3" *ngFor="let moeda of moedas" [value]="moeda.sigla">
+	{{moeda.sigla}} - {{moeda.descricao}}
+</option>
+</select>
+
+47)No input do button alterar para:
+
+<input type="submit" value="Converter" class="btn btn-success" data-toggle="modal"  data-target="#modalCotacao" (click)="converter()" [disable]="!conversaoForm.form.valid">
+
+48)No 2 prompt criar um component para exibicao do modal
+ng g component conversor/modal-cotacao
+
+49)mudar o nome de modal-cotacao para utils
+
+50)criar um index.ts na pasta utils e fazer a exportacao no index.
+Fazer a exportacao no arquivo conversor.module.ts alterar a pasta para './utils'
+
+51)Alterar o conteudo de modal-cotacao.html para:
+<div class="modal fade"	tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="modalLabel">
+        	
+        </h4>
+      </div>
+      <div class="modal-body text-center">
+        <div>
+			<h2>
+				
+			</h2>
+			<p>
+				
+			</p>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button	type="button" class="btn btn-success"data-dismiss="modal">
+        	Nova consulta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+52)No modal-cotacao.component.ts mudar o selector para 'modal-cotacao'
+
+Verificar se as importacoes estao corretas:
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ConversorService } from '../services';
+import { Conversao, ConversaoResponse } from '../models';
+
+
+depois do export adicionar
+...{
+ @Input() id: string;
+  @Input() conversaoResponse: ConversaoResponse;
+  @Input() conversao: Conversao = new Conversao();
+  @Output() onconfirm: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(private conversorService: ConversorService) { }
+
+
+
+
+
+
+
+
+   
+
+
+
+
+ 
