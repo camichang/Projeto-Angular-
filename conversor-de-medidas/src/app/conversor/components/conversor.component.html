@@ -1,0 +1,51 @@
+<br />
+<div class="alert alert-danger"	role="alert" *ngIf="possuiErro">
+	Erro obtendo dados. Tente novamente.
+</div>
+<div class="panel panel-success">
+	<div class="panel-heading">
+		Selecione a medida a ser convertida
+	</div>
+
+
+	  <form class="form-inline" #conversaoForm="ngForm">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="text" name="valor" class="inputform" placeholder="0" [(ngModel)]="conversao.valor" required>
+                </div>
+                <div class="col-lg-6">
+                    <select class="form-control" name="medidaDe" [(ngModel)]="conversao.medidaDe" required>
+                        <option  class="mr-3" *ngFor="let medida of medidas" [value]="medida.sigla">
+                            {{medida.sigla}} - {{medida.descricao}}				
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <select	class="form-control"  [(ngModel)]="conversao.medidaPara" name="medidaPara" required>
+                        <option class="mr-3" *ngFor="let medida of medidas" [value]="medida.sigla">
+                            {{medida.sigla}} - {{medida.descricao}}				
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-12">
+                    <input type="submit" value="Converter" class="btn btn-success" data-toggle="modal" data-target="#modalConversao" (click)="converter()" [disabled]="!conversaoForm.form.valid">
+                </div>
+            </div>
+        </div>
+
+		
+
+
+
+
+
+	  </form>	        
+
+      
+	 <modal-conversao 
+	 [id]="'modalConversao'" 	
+	 [conversao]="conversao"
+	 (onConfirm)="init()">
+	 </modal-conversao>  
+</div>

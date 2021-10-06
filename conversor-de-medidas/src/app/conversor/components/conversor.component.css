@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+.inputform {
+    padding: 12px !important;
+    border-radius: 10px !important;
+    margin: 20px !important;
+    border: 2px solid #A17D0F !important;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+.form-control {
+    width: 100%;
+    padding: 12px !important;
+    border-radius: 10px !important;
+    margin: 20px 20px 40px 20px !important;
+    border: 2px solid #A17D0F !important;
+    height: 60px;
+}
+input.btn.btn-success {
+    background: #EEAC01;
+    border: 2px solid #EEAC01;
+    padding: 20px 84px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    transition: .2s;
+    cursor: pointer;
+    color: #272727;
+}
+input.btn.btn-success:hover {
+    background: none !important;
+    border: 2px solid #EEAC01;
+    color: #EEAC01;
+    font-weight: bolder;
+}
+.panel-heading {
+    font-size: 1.5rem;
+    font-weight: 500;
+}

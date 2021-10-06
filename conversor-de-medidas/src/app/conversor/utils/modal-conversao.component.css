@@ -1,0 +1,21 @@
+button.btn.btn-success {
+    background: #EEAC01;
+    border: 2px solid #EEAC01;
+    padding: 20px 84px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    transition: .2s;
+    cursor: pointer;
+    color: #272727;
+}
+button.btn.btn-success:hover {
+    background: none !important;
+    border: 2px solid #EEAC01;
+    color: #EEAC01;
+    font-weight: bolder;
+}
+.modal-footer {
+    justify-content: center !important;
+}
