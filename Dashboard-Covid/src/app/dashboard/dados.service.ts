@@ -16,7 +16,7 @@ export class DadosService {
 
   atualizarDados(dado: Dado): void {
     let index = dado.mesArr[0] - 6
-    this.dados[index][1] =  dado.numMortes
+    this.dados[index][1] =  dado.numLeitos
   }
 
   obterDados(): Observable<any>{

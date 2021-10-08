@@ -1,0 +1,25 @@
+.logo {
+    text-align: center;
+    width: 100%;
+}
+
+
+.textleft {
+    font-size: 26px;
+    line-height: 42px;
+}
+.bgwhite {
+    border: 6px solid #d2ebe8;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+}
+.bg-tramp {
+    background: rgba(244, 249, 255, 0.9) none repeat scroll 0 0;
+    padding: 80px 40px;
+}
+
+h1{
+    text-align: center;
+}
+
