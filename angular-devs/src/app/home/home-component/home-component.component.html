@@ -1,0 +1,188 @@
+<div class="container content mt-5">
+    <h1 class="fs-1 text-center fw-bold py-3">Bem vindo ao Angular para Devs</h1>
+
+    <img id="angularhome" src="/assets/img/rounded-in-photoretrica1.png" class="rounded mx-auto d-block mt-5">
+
+    <div class="row mr-0"></div>
+    <h2 class="fs-3 px-5 mt-5 fw-bold">O que é Angular?</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p>Antes de começarmos precisamos entender o que é Angular.</p>
+        <p>Angular é uma plataforma de aplicações web de código-fonte aberto e front-end baseado em
+            TypeScript
+            liderado pela Equipe Angular do Google e por uma comunidade de indivíduos e corporações.</p>
+        <p>Com a constante mudança e atualização já era esperado evoluir o AngularJs,
+            sendo assim o Angular
+            foi reescrito e adaptado, isto feito pela mesma equipe que o construiu.</p>
+        <p>Ele é baseado na linguagem TypeScript adicionando uma série de recursos a mais em especial
+            relacionados a tipagem do JavaScript.</p>
+    </div>
+
+    <h2 class="fs-3 px-5 mt-5  fw-bold">Conhecimentos básicos</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p>Conforme dito anteriormente o Angular utiliza a linguagem Typescript que está relacionada com o
+            JavaScript.</p>
+        <p>Para poder utilizar o Angular é necessário que você saiba HTML/CSS e claro JavaScript.</p>
+        <p>Também precisaremos de algumas ferramentas como:</p><br>
+        <div class="row mr-0">
+            <div class="col-3"></div>
+            <div class="col-3">
+                <figure>
+                    <img class="img-thumbnail" width="40%" src="/assets/img/VScode.svg">
+                    <figcaption class="figure-caption">Visual Studio Code</figcaption>
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure>
+                    <img class="img-thumbnail" src="/assets/img/nodelogo.png" width="35%">
+                    <figcaption class="figure-caption">Nodejs</figcaption>
+                </figure>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <h2 class="fs-3 px-5 mt-5  fw-bold">Arquitetura Angular</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p>A arquitetura do Angular permite que possamos organizar a aplicação através de módulos, que fornecem um
+            contexto para que os componentes sejam compilados.</p>
+        <p>Uma aplicação terá pelo menos um módulo raiz que vai inicializar a aplicação.</p>
+        <p>Também temos os componentes que são os responsáveis pela visualização. Os componentes utilizam serviços que
+            fornecem funcionalidades específicas e que são indiretamente relacionadas a essas visualizações.</p>
+        <p>Serviços e componentes são simples classes com decoradores, que definem o tipo e fornecem metadados para
+            informar o Angular como usá-los.</p>
+    </div>
+
+    <h2 class="fs-3 px-5 mt-5  fw-bold">Módulos</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p>Tem como objetivo declarar e agrupar tudo que criamos no Angular. Existem duas estrutura principais, que são:
+            <i>declarations e o providers</i>.
+        </p>
+        <img src="/assets/img/ngmodule.png" class="rounded mx-auto d-block mt-3 mb-3">
+        <p><b>Declarations</b> é onde declaramos os itens que iremos utilizar nesse módulo, como por exemplo componentes
+            e diretivas, já nos <b>Providers</b> informamos os serviços.</p>
+        <p>O ponto de entrada de uma aplicação Angular é o arquivo main.ts (gerado pelo CLI). Ela aponta para o módulo
+            raiz, no caso abaixo é o AppModule.</p>
+        <img src="/assets/img/modulo.png" class="rounded mx-auto d-block mt-3 mb-3">
+        <p>Para criarmos um Modulo na nossa aplicação utilizamos o comando abaixo no cmd/prompt de comando:</p>
+        <img src="/assets/img/comandomodule.png" class="rounded mx-auto d-block mt-3 mb-3">
+    </div>
+
+    <h2 class="fs-3 px-5 mt-5  fw-bold">Componentes</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p>A maior parte do desenvolvimento quando se utiliza o framework Angular é feito nos componentes.</p>
+        <p>Cada componente define uma classe, que contém dados e lógicas do aplicativo e está sempre associada a um
+            template HTML, onde são definidas as visualizações deste componente.</p>
+        <p>O decorator @Component() identifica a classe imediatamente como um componente e oferece o modelo e os
+            metadados específicos dele.</p>
+        <img src="/assets/img/component.png" class="rounded mx-auto d-block mt-3 mb-3">
+        <p>Serviços e componentes são simples classes com decoradores, que definem o tipo e fornecem metadados para
+            informar o Angular como usá-los.</p>
+        <p>Os metadados configuram, por exemplo, como o componente pode ser referenciado no HTML e também quais os
+            serviços devem ser utilizados.</p>
+        <p>Para criarmos um component na aplicação utilizamos o seguinte comando:</p>
+        <img src="/assets/img/componentcomando.png" class="rounded mx-auto d-block mt-3 mb-3">
+        <p>Quando for criado os components, na pasta criada serão exibidos 4 arquivos:</p>
+        <ul class="lh-base">
+            <li>calculadora-cientifica.component.css - é aqui que ficam as estilizações do component, você pode
+                adicionar o código do CSS;</li>
+            <li>calculadora-cientifica.component.html - neste arquivo temos o template do html e ele precisa ter somente
+                o conteúdo não precisa ter toda a estrutura do html;</li>
+            <li>calculadora-cientifica.component.spec.ts - este arquivo é um arquivo de teste, caso você queira testar
+                para verificar se existem bugs;</li>
+            <li>calculadora-cientifica.component.ts - este é o arquivo mais importante do componente, pois é nele que
+                temos toda a lógica da aplicação;</li>
+        </ul>
+    </div>
+
+    <h2 class="fs-3 px-5 mt-5  fw-bold">Data Binding</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p> A vinculação de dados é um dos recursos mais poderosos e importantes em qualquer linguagem de
+            desenvolvimento de software.</p>
+        <p>Ele nos permite definir a comunicação entre o componente e a visualização. Portanto, podemos dizer que a
+            vinculação de dados é passada de um componente para a visualização e da visualização para o componente.</p>
+        <p>Para isso temos alguns data bindings que podemos utilizar:</p>
+        <ul>
+            <li class="lh-base">String Interpolation - a interpolação faz somente a apresentação do dado para o usuário.
+                Para fazer essa
+                interpolação, utilizamos o comando abaixo: </li>
+            <img src="/assets/img/interpolacao.png" class="rounded mx-auto d-block mt-3 mb-3">
+            <li class="lh-base">Property Binding - é utilizado para atrelar valores de atributos do componente aos
+                atributos de um elemento HTML ou algum outro componente. Deste modo a propriedade terá o valor do
+                atributo do seu componente. Utilizamos conforme abaixo:</li>
+            <img src="/assets/img/propriedadedatabinding.png" class="rounded mx-auto d-block mt-3 mb-3">
+            <li class="lh-base">Event Binding - O Event Binding funciona para ouvir eventos nativos do HTML ou eventos
+                que podem ser criados pelo programador, executando algum método do componente. Para este data binding
+                utilizamos a sintaxe abaixo:</li>
+            <img src="/assets/img/eventdeescuta.png" class="rounded mx-auto d-block mt-3 mb-3">
+            <li class="lh-base">Two Way Data Binding - é um tipo especial de binding, além dele ser apresentado na tela
+                do usuário, se caso o usuário edite algum campo de input o valor será alterado no component. É muito
+                utilizado para atualizar dados em tempo real.</li>
+            <img src="/assets/img/twobydatabinding.png" class="rounded mx-auto d-block mt-3 mb-3">
+        </ul>
+    </div>
+    <h2 class="fs-3 px-5 mt-5 fw-bold">Diretivas</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p> As diretivas são como marcadores no elemento DOM que comunicam ao Angular para incluir um comportamento
+            específico.</p>
+        <p>O propósito da diretiva é fornecer meios para que possamos manipular o DOM ou estender as funcionalidades do
+            elemento no qual a diretiva terá ação, como por exemplo alterar o seu conteúdo, estilo, visibilidade etc..,
+            dependendo da necessidade da funcionalidade a ser desenvolvida.</p>
+        <p style="text-decoration: underline;">Tipos de Diretivas:</p>
+        <ul>
+            <li>ngStyle - serve para alterar em tempo real valores de propriedades de CSS dentro de um elemento HTML ou
+                componente.</li>
+            <img src="/assets/img/ngstyle.png" class="rounded mx-auto d-block mt-3 mb-3">
+            <li class="lh-base">ngClass - serve para adicionar ou remover uma classe de algum elemento HTML ou
+                componente que está sendo usado. A sintaxe é a mesma do ngStyle. Basta colocar a diretiva como atributo.
+            </li>
+            <li class="lh-base">ngIf - O ngIf é uma diretiva estrutural que, a partir de uma condição booleana, pode ou
+                não adicionar elementos a DOM, dinamizando ainda mais o site a interatividade do usuário.</li>
+            <img src="/assets/img/ngif.png" class="rounded mx-auto d-block mt-3 mb-3">
+            <li>ngSwitch - O ngSwitch também é uma diretiva estrutural e similar a estrutura switch das linguagens de
+                programação.</li>
+            <img src="/assets/img/ngswitch.png" class="rounded mx-auto d-block mt-3 mb-3">
+            <li>ngFor - Com esta diretiva você pode utilizar laços de repetição para arrays que contém dados que serão
+                apresentados na tela do usuário.</li>
+            <img src="/assets/img/ngfor.png" class="rounded mx-auto d-block mt-3 mb-3">
+        </ul>
+        <p>Componentes Auxiliares podem facilitar ainda mais a utilização dessas diretivas. Esses componentes são:</p>
+        <ul>
+            <li class="lh-base">ng-template - Esse componente guarda dentro dela elementos HTML ou componentes que podem
+                ou não serem renderizados. Normalmente é utilizado para mostrar outros elementos quando alguma condição
+                feita com o ngIf é falsa, sendo um componente alternativo a ser renderizado na tela</li>
+            <li class="lh-base">ng-container - Esse componente tem uma proposta similar ao ng-template. No entanto, ele
+                é usado normalmente para renderização em diretivas ngFor que possuem uma condição com ngIf.</li>
+            <li class="lh-base">ng-content - Com o ng-content é possível fazer com que elementos ou componentes sejam
+                adicionados como filhos de outro componente, sendo mostrados quando o componente for renderizado em
+                tela.</li>
+        </ul>
+    </div>
+    <h2 class="fs-3 px-5 mt-5  fw-bold">Roteamento</h2>
+    <div class="fs-5 text-justify content1 px-4">
+        <p>Para controlar a navegação de uma view para a próxima, podemos utilizar o Angular Router. O Router permite a
+            navegação interpretando um URL do navegador como uma instrução para alterar a visualização</p>
+        <p>Ao iniciarmos o projeto, vamos no arquivo app.module.ts e vamos importar o Routes e o RouterModule dentro
+            dele.
+        </p>
+        <img src="/assets/img/rotas.png" class="rounded mx-auto d-block mt-3 mb-3">
+        <p>Com as rotas declaramos diferente do html ao invés de usarmos a propriedade href usaremos o routerLink e
+            passaremos o path da nossa rota como mostra abaixo:</p>
+        <div class="row mr-0">
+            <div class="col-6">
+                <img src="/assets/img/comandopath.png" class="rounded mx-auto d-block mt-3 mb-3">
+        </div>
+        <div class="col-6">
+            <img src="/assets/img/pathroutes.png" class="rounded mx-auto d-block mt-3 mb-3">
+        </div>
+    </div>
+    <p>Devemos colocar também a tag abaixo no final do html para que funcione corretamente:</p>
+    <img src="/assets/img/taghtml.png" class="rounded mx-auto d-block mt-3 mb-3"><br>
+   
+    <p>E chegamos ao final desse breve resumo sobre as principais funcionalidades do Angular, no menu em Ambientes, você poderá fazer um projeto.</p>
+    <p>Para mais informações acesse a documentação do Angular clicando no botao abaixo.</p>
+
+    <a href="https://angular.io/" target="_blank" class="btn btn-primary mb-5">Angular</a>
+</div>
+
+
+</div>

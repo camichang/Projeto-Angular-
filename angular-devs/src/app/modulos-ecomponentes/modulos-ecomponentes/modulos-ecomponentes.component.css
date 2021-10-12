@@ -1,0 +1,22 @@
+p{
+    font-size: large;
+    text-align: justify;
+    text-indent: 10px;
+    line-height: 1.5;
+}
+
+#node img{
+    border-radius: 5%;
+}
+
+#comando img{
+    border-radius: 100%;
+}
+
+h2{
+    text-align: center;
+}
+
+h3, h1{
+    font-weight: bold;
+}

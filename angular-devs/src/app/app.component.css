@@ -1,0 +1,28 @@
+.navbar{
+    font-size: 1.5rem;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-container {
+    width: 400px;
+    height: 200px;
+    margin: 10px;
+    border: 1px solid #555;
+  }
+
+body{
+  background-color: #d4d3d3 !important;
+}
+
+footer{
+  position: relative;
+  bottom: 0%;
+}
+
+.mat-icon {
+  font-size: 36px;
+}
+

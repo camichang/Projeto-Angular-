@@ -1,0 +1,51 @@
+<div class="container container-light mt-5">
+    <h3>Calculadora Científica</h3>
+
+    <form class="form-light">
+        <input readonly id="display1" type="text" class="form-control-lg text-right form-input-light" [value]="display">
+    </form>
+
+    <div class="d-flex justify-content-between button-row">
+        <button id="pi" type="button" class="operator-group-light" (click)="definirOperacao('pi')">&pi;</button>
+        <button id="quadrado" type="button" class="operator-group-light"(click)="definirOperacao('x2')">&#8730;</button>
+        <button id="raiz" type="button" class="operator-group-light" (click)="definirOperacao('raiz')">&#120;&#178;</button>
+        <button id="cubo" type="button" class="operator-group-light" (click)="definirOperacao('x3')">&#120;&#179;</button>
+    </div>
+
+    <div class="d-flex justify-content-between button-row">
+        <button id="clear" type="button" class="col-6 clear-light" (click)="limpar()">C</button>
+        <button id="porcento" type="button" class="operator-group-light" (click)="definirOperacao('%')">%</button>
+        <button id="divide" type="button" class="operator-group-light" (click)="definirOperacao('/')">/</button>
+    </div>
+
+
+    <div class="d-flex justify-content-between button-row">
+        <button id="seven" type="button" class="operand-group-light" (click)="adicionaNumero('7')">7</button>
+        <button id="eight" type="button" class="operand-group-light" (click)="adicionaNumero('8')">8</button>
+        <button id="nine" type="button" class="operand-group-light" (click)="adicionaNumero('9')">9</button>
+        <button id="multiply" type="button" class="operator-group-light" (click)="definirOperacao('*')">*</button>
+    </div>
+
+
+    <div class="d-flex justify-content-between button-row">
+        <button id="four" type="button" class="operand-group-light" (click)="adicionaNumero('4')">4</button>
+        <button id="five" type="button" class="operand-group-light" (click)="adicionaNumero('5')">5</button>
+        <button id="six" type="button" class="operand-group-light" (click)="adicionaNumero('6')">6</button>
+        <button id="subtract" type="button" class="operator-group-light" (click)="definirOperacao('-')">-</button>
+    </div>
+
+
+    <div class="d-flex justify-content-between button-row">
+        <button id="one" type="button" class="operand-group-light" (click)="adicionaNumero('1')">1</button>
+        <button id="two" type="button" class="operand-group-light" (click)="adicionaNumero('2')">2</button>
+        <button id="three" type="button" class="operand-group-light" (click)="adicionaNumero('3')">3</button>
+        <button id="add" type="button" class="operator-group-light" (click)="definirOperacao('+')">+</button>
+    </div>
+
+    <div class="d-flex justify-content-between button-row">
+        <button id="zero" type="button" class="operand-group-light" (click)="adicionaNumero('0')">0</button>
+        <button id="decimal" type="button" class="operand-group-light"  (click)="adicionaNumero('.')">.</button>
+        <button id="equal" type="button" class="equal-light col-6" (click)="calcular()">=</button>
+    </div>
+</div>
+<div class="row mr-0 mb-5"></div>

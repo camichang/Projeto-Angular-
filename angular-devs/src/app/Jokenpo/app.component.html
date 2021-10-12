@@ -1,0 +1,165 @@
+<!-- Página Inicial -->
+<div class="container tela-inicial text-center card pb-4 mt-5" *ngIf="showInicio">
+  <div class="card-header">
+    <img src="/assets/img/jo-ken-po.png" alt="">
+  </div>
+  <p>
+    Originalmente criado na China e muito conhecido no Japão, onde até mesmo temos campeonatos deste jogo, o Jokenpô é um
+    jogo que muitas crianças gostam pela facilidade em aprender. O objetivo é sempre o mesmo: derrotar o oponente de
+    acordo com a sua escolha. No Brasil, é popularmente conhecido como "Pedra, Papel e Tesoura", onde a pedra quebra a
+    tesoura, a tesoura rasga o papel e o papel embrulha a pedra.
+  </p>
+  <p>
+    A simplicidade deste jogo permite com que sejam criadas diversas variáveis, de acordo a vontade dos jogadores. Uma
+    grande variável foi citada na série The Big Bang Theory, onde além dos três componentes básicos, são incluídos o
+    lagarto e o Spock (personagem da série Star Trek).
+  </p>
+  <p>
+    Há ainda variações onde incluem lesmas, sapos, etc. A imaginação dos jogadores é o limite para este divertido jogo.
+  </p>
+  <p>
+    Aqui você vai poder jogar a versão brasileira, escolhendo entre três personagens: A Pedra, A Tesoura e O Papel.
+    Clique em jogar para saber mais!
+  </p>
+  <br>
+  <button class="btn btn-danger btn-lg font-weight-bold" (click)="iniciarJogo()">Jogar</button>
+</div>
+
+<!-- Tela do jogo  -->
+<div *ngIf="showTabuleiro">
+  <div class="content3 container mb-4 mt-5">
+    <div class="row py-4 px-2">
+      <div class="card personagem p-3 col-12 col-md-4 col-lg-3 mx-auto">
+        <img src="/assets/img/pedra.png" class="card-img-top img-fluid px-4">
+        <div class="card-body">
+          <p class="card-text text-justify">PEDRA: Ela é forte, braba e destemida, consegue quebrar tudo que ela vê
+            pela
+            frente, ninguém tem coragem de encarar, a única coisa que pode a derrubar é a sua quedinha
+            pelo
+            seu melhor amigo, o Papel.
+          </p>
+        </div>
+      </div>
+      <div class="card personagem p-3 col-12 col-md-4 col-lg-3">
+        <img src="/assets/img/papel.png" class="card-img-top img-fluid px-4">
+        <div class="card-body">
+          <p class="card-text text-justify">PAPEL: Magro e pálido, sempre foi zoado por todos, até que um dia conheceu
+            a
+            Pedra e tudo mudou, sua vida passou a
+            ser mais divertida. O ponto forte do seu dia, é poder abraçar a sua amiga.
+          </p>
+        </div>
+      </div>
+      <div class="card personagem p-3 col-12 col-md-4 col-lg-3 mx-auto">
+        <img src="/assets/img/tesoura.png" class="card-img-top img-fluid px-4">
+        <div class="card-body">
+          <p class="card-text text-justify">TESOURA: Sempre com inveja da amizade entre Pedra e Papel, a Tesoura vive
+            procurando uma oportunidade
+            para
+            destruir essa relação. Ela tem como meta, um dia, acabar com aquele rascunho insolente.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="instrucoes row">
+      <div class="col-6 mr-auto ml-auto text-justify">
+        <h2 class="text-center">Como jogar</h2>
+        <ul class="text-center">
+          <li>Escolha o seu lutador entre:
+            <ul>
+              <li>Pedra, a forte</li>
+              <li>Papel, o carinhoso</li>
+              <li>Tesoura, a invejosa</li>
+            </ul>
+          </li>
+          <li>O computador escolherá o oponente!
+          </li>
+
+          <li>Conforme a história, essas são as opções:
+            <ul>
+              <li>Papel abraça a Pedra</li>
+              <li>Pedra bate na Tesoura</li>
+              <li>Tesoura rasga Papel</li>
+            </ul>
+          </li>
+          <li>O ponto será somado ao vencedor. Você escolhe até quanto vai jogar, caso queira recomeçar a
+            pontuação, basta
+            clicar em recomeçar!
+          </li>
+        </ul>
+        <p class="text-center font-weight-bold display-4">Boa sorte!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content mb-4 row container card">
+    <!-- Player 1 -->
+    <div class="card">
+      <div class="card-body">
+        <div class="content1">
+          <h2 class="card-title"> Você</h2>
+          <button mat-fab color="primary" class="pontuacao">{{ pontuacao[0] }}</button>
+        </div>
+
+        <h3 class="my-2"> Escolha pedra, papel ou tesoura </h3>
+        <div class="content2 mt-3">
+          <a><img (click)="pick(0)" id="imagem1" class="imagens img-fluid" src="/assets/img/pedra.png"
+              alt=""></a>
+          <a><img (click)="pick(1)" id="imagem2" class="imagens img-fluid ml-2"
+              src="/assets/img/papel.png" alt=""></a>
+          <a><img (click)="pick(2)" id="imagem3" class="imagens img-fluid pb-5"
+              src="/assets/img/tesoura.png" alt=""></a>
+        </div>
+
+      </div>
+    </div>
+    <!-- Player 2 -->
+    <div class="card">
+      <div class="card-body">
+        <div class="content1">
+          <h2 class="card-title"> Computador</h2>
+          <button mat-fab color="accent" class="pontuacao">{{ pontuacao[1] }}</button>
+
+        </div>
+        <br><br>
+
+        <div *ngIf="computador !== -1" class="d-flex justify-content-center">
+          <img *ngIf="computador == 0" class="imagens2" src="/assets/img/pedra.png" alt="">
+          <img *ngIf="computador == 1" class="imagens2" src="/assets/img/papel.png" alt="">
+          <img *ngIf="computador == 2" class="imagens2" src="/assets/img/tesoura.png" alt="">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <section class="container py-2 text-center font-weight-bold">Resultado
+    <div *ngIf="!loading && isResultShow" class="d-flex justify-content-center text-center"
+      style="flex-direction: column">
+      <div [ngSwitch]="theResult">
+        <ng-template [ngSwitchCase]="0">
+          <h1> Você ganhou! </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="1">
+          <h1> Você perdeu. </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="2">
+          <h1>Empatou! </h1>
+        </ng-template>
+        <ng-template ngSwitchDefault> </ng-template>
+      </div>
+      <p> Escolha outro para continuar ou </p>
+      <button class="btn btn-danger btn-lg" (click)="reset()"> Limpar Pontos</button>
+    </div>
+
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </section>
+
+</div>

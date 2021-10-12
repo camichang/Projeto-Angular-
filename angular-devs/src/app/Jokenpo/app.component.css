@@ -1,0 +1,81 @@
+body.mat{
+  background-image: url(/assets/img/background.png);
+}
+
+.content{
+    margin: 2vh auto;
+    padding-top:2vh;
+    padding-bottom: 2vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background-color: rgba(245, 245, 220, 0.938);
+    backdrop-filter: blur(2px);
+    border: 3px dashed black;
+    border-radius: 10px;
+
+  }
+
+  .content1{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .content2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content3 {
+    background-color: rgba(245, 245, 220, 0.911);
+    backdrop-filter: blur(2px);
+    border: 3px dashed black;
+    border-radius: 10px;
+  }
+
+  .personagem{
+    background-color: rgba(212, 92, 37, 0.842) !important;
+    color:aliceblue;
+  }
+  
+  .pontuacao{
+    margin-top:.5em;
+    margin-left:2em;
+    font-size:1.5em
+  }
+  .fa {
+    cursor:pointer;
+    font-size:5em;
+  }
+
+  .imagens {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .imagens2{
+    width: 36%;
+    -webkit-filter: drop-shadow(0px 0px 20px  rgb(146, 32, 42));
+    filter: drop-shadow(0px 0px 20px rgb(129, 29, 42));
+  }
+  .imagens:hover{
+    -webkit-filter: drop-shadow(0px 0px 4px  rgb(98, 94, 94));
+    filter: drop-shadow(0px 0px 4px rgb(133, 125, 125));
+  }
+
+  #imagem1:target, #imagem2:target, #imagem3:target{
+    -webkit-filter: drop-shadow(0px 0px 20px  rgb(54, 146, 32));
+    filter: drop-shadow(0px 0px 20px rgb(32, 129, 29)) hue-rotate(90deg);
+    transition: linear;
+  }
+
+  .tela-inicial, section {
+    background-color: rgba(245, 242, 229, 0.924);
+    backdrop-filter: blur(2px);
+    border: 3px dashed black;
+    border-radius: 10px;
+  }
+  ul li {
+    list-style: none;
+    margin-left: -40px;
+  }
+
