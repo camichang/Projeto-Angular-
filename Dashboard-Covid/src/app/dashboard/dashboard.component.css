@@ -1,0 +1,33 @@
+select#mes {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #26aef9;
+    border-radius: 10px;
+    height: 55px;
+    outline: medium none;
+    padding: 0 20px;
+    width: 100%;
+    margin-top: 5%;
+}
+
+input#numLeitos {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #26aef9;
+    border-radius: 10px;
+    height: 55px;
+    outline: medium none;
+    padding: 0 20px;
+    width: 100%;
+    margin-top: 5%;
+}
+
+button{
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #26aef9;
+    border-radius: 10px;
+    height: 55px;
+    outline: medium none;
+    padding: 0 20px;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
