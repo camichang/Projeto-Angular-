@@ -1,0 +1,16 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  .example-card {
+    max-width: 250px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://www.selecoes.com.br/wp-content/uploads/2020/11/valentines-day-cupcake-picture-id1090129656-760x450.jpg');
+    background-size: cover;
+  }
