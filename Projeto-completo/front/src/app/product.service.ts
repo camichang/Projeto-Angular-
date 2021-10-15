@@ -21,7 +21,7 @@ export class ProductService {
     if(!this.loaded){
       this.http.get<Product[]>(this.url)
       .pipe(
-        tap((deps)=> console.log(deps)), //faz um efeito colateral que emite uma notificacao, pra quando se deseja usar o modal do status
+        tap((prods)=> console.log(prods)), //faz um efeito colateral que emite uma notificacao, pra quando se deseja usar o modal do status
         delay(1000)
       )
       .subscribe(this.productsSubject$);
@@ -30,34 +30,34 @@ export class ProductService {
     return this.productsSubject$.asObservable();
   }
 
-  add(d: Product): Observable<Product>{
+  add(p: Product): Observable<Product>{
     return this.http.post<Product>(this.url, d)
     .pipe(
-      tap((dep: Product)=> this.productsSubject$.getValue().push(dep))
+      tap((prod: Product)=> this.productsSubject$.getValue().push(prod))
     )
   }
 
   
-  del(dep: Product): Observable<any> {
-    return this.http.delete(`${this.url}/${dep._id}`)
+  del(prod: Product): Observable<any> {
+    return this.http.delete(`${this.url}/${prod._id}`)
       .pipe(
         tap(() => {
           let products = this.productsSubject$.getValue();
-          let i = products.findIndex(d => d._id === dep._id);
+          let i = products.findIndex(p => p._id === prod._id);
           if (i >= 0)
             products.splice(i, 1); //remove 1 e adiciona outro
         })
       )
   }
 
-  update(dep: Product): Observable<Product> {
-    return this.http.patch<Product>(`${this.url}/${dep._id}`, dep)
+  update(prod: Product): Observable<Product> {
+    return this.http.patch<Product>(`${this.url}/${prod._id}`, prod)
       .pipe(
-        tap((d) => {
+        tap((p) => {
           let products = this.productsSubject$.getValue();
-          let i = products.findIndex(d => d._id === dep._id);
+          let i = products.findIndex(p => p._id === prod._id);
           if (i >= 0)
-            products[i].name = d.name;
+            products[i].name = p.name;
         })
       )
   }
